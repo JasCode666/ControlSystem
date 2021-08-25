@@ -114,8 +114,8 @@ public class Main extends JFrame {
 		
 		switch (this.adminPermission)
 		{
-			case 1 -> this.admin = "ºÞ²z­û";
-			case 2 -> this.admin = "¶W¯ÅºÞ²z­û";
+			case 1 -> this.admin = "ç®¡ç†å“¡";
+			case 2 -> this.admin = "è¶…ç´šç®¡ç†å“¡";
 		}
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -129,31 +129,31 @@ public class Main extends JFrame {
 		contentPane.setLayout(null);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 12));
+		tabbedPane.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 12));
 		tabbedPane.setBounds(0, 0, 944, 501);
 		contentPane.add(tabbedPane);
 		
 		JPanel panel = new JPanel();
-		tabbedPane.addTab("¬d¬Ýª¬ºA", null, panel, null);
+		tabbedPane.addTab("æŸ¥çœ‹ç‹€æ…‹", null, panel, null);
 		panel.setLayout(null);
 		
 		JTextArea textArea = new JTextArea();
 		textArea.setEditable(false);
-		textArea.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		textArea.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		textArea.setBounds(10, 28, 409, 194);
 		JScrollPane scrollBar = new JScrollPane(textArea);
 		scrollBar.setBounds(10, 28, 919, 432);
 		panel.add(scrollBar);
 		
 		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("§ó·sª¬ºA", null, panel_1, null);
+		tabbedPane.addTab("æ›´æ–°ç‹€æ…‹", null, panel_1, null);
 		panel_1.setLayout(null);
 		
 		JComboBox comboBox_1 = new JComboBox();
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] {"\u8ACB\u9078\u64C7"}));
 		comboBox_1.setToolTipText("");
-		comboBox_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
-//		comboBox_1.addItem("½Ð¿ï¾Ü");
+		comboBox_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
+//		comboBox_1.addItem("è«‹é¸æ“‡");
 		comboBox_1.setBounds(137, 54, 202, 23);
 		panel_1.add(comboBox_1);
 		try {
@@ -168,37 +168,37 @@ public class Main extends JFrame {
 		}
 		
 		JLabel codeLbl = new JLabel("\u5E33\u865F\u4EE3\u865F :");
-		codeLbl.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		codeLbl.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		codeLbl.setBounds(37, 56, 103, 19);
 		panel_1.add(codeLbl);
 		
 		JLabel statusLbl = new JLabel("\u66F4\u65B0\u72C0\u614B :");
-		statusLbl.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		statusLbl.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		statusLbl.setBounds(37, 98, 103, 19);
 		panel_1.add(statusLbl);
 		
 		JComboBox comboBox_1_1 = new JComboBox();
-		comboBox_1_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		comboBox_1_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		comboBox_1_1.setModel(new DefaultComboBoxModel(new String[] {"\u8ACB\u9078\u64C7", "\u639B\u9322\u4E2D", "\u7DF4\u7B49\u4E2D", "\u5DF2\u6B7B\u4EA1", "\u5DF2\u9000\u5F79", "\u672A\u5275\u89D2\u8272", "\u7B49\u8CB7\u5BF5\u7269\u4E2D", "\u53EF\u639B(\u672A\u4F7F\u7528)", "\u5275\u597D\u5DF2\u9818\u7269\u54C1", "\u5275\u597D\u672A\u9818\u7269\u54C1"}));
 		comboBox_1_1.setBounds(137, 98, 202, 23);
 		panel_1.add(comboBox_1_1);
 		
 		JButton btnNewButton = new JButton("\u9001\u51FA\u66F4\u65B0");
-		btnNewButton.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		btnNewButton.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					switch (sc.update(comboBox_1.getSelectedItem().toString(), comboBox_1_1.getSelectedItem().toString(), name, noticeLbl.getText()))
 					{
 						case 0 :
-							JOptionPane.showMessageDialog(null, "ª¬ºA§ó·s§¹¦¨");
+							JOptionPane.showMessageDialog(null, "ç‹€æ…‹æ›´æ–°å®Œæˆ");
 							noticeLbl.setText("");
 							break;
 						case 1 :
-							JOptionPane.showMessageDialog(null, "¥¼¿ï¾Ü±b¸¹");
+							JOptionPane.showMessageDialog(null, "æœªé¸æ“‡å¸³è™Ÿ");
 							break;
 						case 2 :
-							JOptionPane.showMessageDialog(null, "¥¼¿ï¾Üª¬ºA");
+							JOptionPane.showMessageDialog(null, "æœªé¸æ“‡ç‹€æ…‹");
 							break;
 					}
 				} catch (HeadlessException e1) {
@@ -214,38 +214,38 @@ public class Main extends JFrame {
 		panel_1.add(btnNewButton);
 		
 		JLabel statusLbl_1 = new JLabel("\u72C0\u614B\u5099\u8A3B :");
-		statusLbl_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		statusLbl_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		statusLbl_1.setBounds(37, 142, 103, 19);
 		panel_1.add(statusLbl_1);
 		
 		noticeLbl = new JTextField();
-		noticeLbl.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		noticeLbl.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		noticeLbl.setBounds(137, 142, 202, 23);
 		panel_1.add(noticeLbl);
 		noticeLbl.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("·s¼W±b¸¹", null, panel_2, null);
+		tabbedPane.addTab("æ–°å¢žå¸³è™Ÿ", null, panel_2, null);
 		panel_2.setLayout(null);
 		
 		JLabel lblNewLabel_2 = new JLabel("\u7D44\u6578 :");
-		lblNewLabel_2.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		lblNewLabel_2.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		lblNewLabel_2.setBounds(41, 33, 56, 22);
 		panel_2.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("\u8A3B : \u65B0\u589E\u5B8C\u8ACB\u5237\u65B0\u5E33\u865F\u8CC7\u6599");
-		lblNewLabel_3.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		lblNewLabel_3.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		lblNewLabel_3.setBounds(41, 198, 264, 22);
 		lblNewLabel_3.setForeground(Color.RED.darker());
 		panel_2.add(lblNewLabel_3);
 		
 		JSpinner spinner = new JSpinner();
-		spinner.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		spinner.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		spinner.setBounds(104, 33, 97, 22);
 		panel_2.add(spinner);
 		
 		JButton addBtn = new JButton("\u65B0\u589E");
-		addBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		addBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		addBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -260,10 +260,10 @@ public class Main extends JFrame {
 					switch (sc.insert(row, (Integer)spinner.getValue()))
 					{
 						case 0 :
-							JOptionPane.showMessageDialog(null, "·s¼W¦¨¥\");
+							JOptionPane.showMessageDialog(null, "æ–°å¢žæˆåŠŸ");
 							break;
 						case 1 :
-							JOptionPane.showMessageDialog(null, "·s¼W¥¢±Ñ");
+							JOptionPane.showMessageDialog(null, "æ–°å¢žå¤±æ•—");
 							break;
 					}
 					
@@ -277,7 +277,7 @@ public class Main extends JFrame {
 		panel_2.add(addBtn);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("\u8A3B : \u4E00\u500B\u6A02\u8C46\u5E33\u865F\u70BA\u4E00\u7D44");
-		lblNewLabel_3_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		lblNewLabel_3_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		lblNewLabel_3_1.setBounds(41, 166, 264, 22);
 		lblNewLabel_3_1.setForeground(Color.RED.darker());
 		panel_2.add(lblNewLabel_3_1);
@@ -285,7 +285,7 @@ public class Main extends JFrame {
 		JComboBox comboBox_1_2 = new JComboBox();
 		comboBox_1_2.setModel(new DefaultComboBoxModel(new String[] {"\u8ACB\u9078\u64C7"}));
 		comboBox_1_2.setToolTipText("");
-		comboBox_1_2.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		comboBox_1_2.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		comboBox_1_2.setBounds(612, 33, 202, 23);
 		panel_2.add(comboBox_1_2);
 		try {
@@ -317,33 +317,33 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		refreshBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		refreshBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		refreshBtn.setBounds(160, 96, 79, 31);
 		panel_2.add(refreshBtn);
 		
 		JLabel codeLbl_1 = new JLabel("\u5E33\u865F\u4EE3\u865F :");
-		codeLbl_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		codeLbl_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		codeLbl_1.setBounds(512, 35, 103, 19);
 		panel_2.add(codeLbl_1);
 		
 		JLabel codeLbl_1_1 = new JLabel("\u6A02\u8C46\u5E33\u865F :");
-		codeLbl_1_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		codeLbl_1_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		codeLbl_1_1.setBounds(512, 80, 103, 19);
 		panel_2.add(codeLbl_1_1);
 		
 		JLabel codeLbl_1_2 = new JLabel("\u6A02\u8C46\u5BC6\u78BC :");
-		codeLbl_1_2.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		codeLbl_1_2.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		codeLbl_1_2.setBounds(512, 126, 103, 19);
 		panel_2.add(codeLbl_1_2);
 		
 		beanAccount = new JTextField();
-		beanAccount.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		beanAccount.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		beanAccount.setBounds(612, 79, 202, 22);
 		panel_2.add(beanAccount);
 		beanAccount.setColumns(10);
 		
 		beanPassword = new JTextField();
-		beanPassword.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		beanPassword.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		beanPassword.setColumns(10);
 		beanPassword.setBounds(612, 125, 202, 22);
 		panel_2.add(beanPassword);
@@ -353,15 +353,15 @@ public class Main extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (sc.createAccount(comboBox_1_2.getSelectedItem().toString(), beanAccount.getText(), beanPassword.getText()))
 				{
-					JOptionPane.showMessageDialog(null, "§ó·s±b¸¹±K½X¦¨¥\");
+					JOptionPane.showMessageDialog(null, "æ›´æ–°å¸³è™Ÿå¯†ç¢¼æˆåŠŸ");
 					beanAccount.setText("");
 					beanPassword.setText("");
 				}
 				else
-					JOptionPane.showMessageDialog(null, "§ó·s±b¸¹±K½X¥¢±Ñ");
+					JOptionPane.showMessageDialog(null, "æ›´æ–°å¸³è™Ÿå¯†ç¢¼å¤±æ•—");
 			}
 		});
-		createBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		createBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		createBtn.setBounds(554, 189, 79, 31);
 		panel_2.add(createBtn);
 		
@@ -372,23 +372,23 @@ public class Main extends JFrame {
 				beanPassword.setText("");
 			}
 		});
-		clearBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		clearBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		clearBtn.setBounds(719, 189, 79, 31);
 		panel_2.add(clearBtn);
 		
 		JComboBox statusBox = new JComboBox();
-		statusBox.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		statusBox.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		statusBox.setModel(new DefaultComboBoxModel(new String[] {"\u5168\u90E8", "\u639B\u9322\u4E2D", "\u7DF4\u7B49\u4E2D", "\u5DF2\u6B7B\u4EA1", "\u5DF2\u9000\u5F79", "\u672A\u5275\u89D2\u8272", "\u672A\u5275\u5E33\u865F", "\u7B49\u8CB7\u5BF5\u7269\u4E2D", "\u53EF\u639B(\u672A\u4F7F\u7528)", "\u5275\u597D\u5DF2\u9818\u7269\u54C1", "\u5275\u597D\u672A\u9818\u7269\u54C1"}));
 		statusBox.setBounds(55, 2, 148, 23);
 		panel.add(statusBox);
 		
 		JButton searchBtn = new JButton("\u67E5\u8A62");
-		searchBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 12));
+		searchBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 12));
 		searchBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textArea.setText("");
 				String userSelect = statusBox.getSelectedItem().toString();
-				if (userSelect.equals("¥þ³¡"))
+				if (userSelect.equals("å…¨éƒ¨"))
 					try {
 						ResultSet rs = sc.find("*");
 						ResultSetMetaData rsmd = rs.getMetaData();
@@ -399,7 +399,7 @@ public class Main extends JFrame {
 							textArea.append(rsmd.getColumnLabel(i) + "\t| ");
 						}
 						textArea.append("\n");
-						textArea.append("¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X\n");
+						textArea.append("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 						while (rs.next())
 						{
 							textArea.append(" " + rs.getString(1) + 
@@ -411,11 +411,11 @@ public class Main extends JFrame {
 									"\t|  " + rs.getString(6) + 
 									"\n"
 							);
-							textArea.append("¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X\n");
+							textArea.append("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 							countLine++;
 						}
 						textArea.setCaretPosition(0);
-						textArea.insert(" ·j´M ' "+ userSelect + " '\tµ²ªGÁ`¦@¦³ : " + countLine + " °¦¨¤¦â\n", 1);
+						textArea.insert(" æœå°‹ ' "+ userSelect + " '\tçµæžœç¸½å…±æœ‰ : " + countLine + " éš»è§’è‰²\n", 1);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -432,7 +432,7 @@ public class Main extends JFrame {
 							textArea.append(rsmd.getColumnLabel(i) + "\t| ");
 						}
 						textArea.append("\n");
-						textArea.append("¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X\n");
+						textArea.append("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 						while (rs.next())
 						{
 							textArea.append(" " + rs.getString(1) + 
@@ -444,11 +444,11 @@ public class Main extends JFrame {
 									"\t|  " + rs.getString(6) + 
 									"\n"
 							);
-							textArea.append("¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X¡X\n");
+							textArea.append("â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”\n");
 							countLine++;
 						}
 						textArea.setCaretPosition(0);
-						textArea.insert(" ·j´M ' "+ userSelect + " '\tµ²ªGÁ`¦@¦³ : " + countLine + " °¦¨¤¦â\n", 1);
+						textArea.insert(" æœå°‹ ' "+ userSelect + " '\tçµæžœç¸½å…±æœ‰ : " + countLine + " éš»è§’è‰²\n", 1);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -460,17 +460,17 @@ public class Main extends JFrame {
 		panel.add(searchBtn);
 		
 		JLabel lblNewLabel = new JLabel("\u72C0\u614B");
-		lblNewLabel.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		lblNewLabel.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		lblNewLabel.setBounds(10, 6, 49, 15);
 		panel.add(lblNewLabel);
 		
 		JPanel panel_3 = new JPanel();
-		tabbedPane.addTab("¹CÀ¸§ð²¤", null, panel_3, null);
+		tabbedPane.addTab("éŠæˆ²æ”»ç•¥", null, panel_3, null);
 		panel_3.setLayout(null);
 		
 		JTextArea textArea1 = new JTextArea();
 		textArea1.setEditable(this.adminPermission > 0);
-		textArea1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		textArea1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		textArea1.setBounds(10, 28, 409, 194);
 		JScrollPane scrollBar1 = new JScrollPane(textArea1);
 		scrollBar1.setBounds(10, 29, 419, 431);
@@ -484,28 +484,28 @@ public class Main extends JFrame {
 		JTextArea textArea2 = new JTextArea();
 		scrollBar2.setViewportView(textArea2);
 		textArea2.setEditable(false);
-		textArea2.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		textArea2.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		textArea2.setText(text.str2);
 		textArea2.setCaretPosition(0);
 		
 		JLabel lblNewLabel_1 = new JLabel(" \u7DF4\u7D1A\u653B\u7565");
-		lblNewLabel_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		lblNewLabel_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		lblNewLabel_1.setBounds(10, 4, 102, 21);
 		panel_3.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("\u661F\u529B\u653B\u7565");
-		lblNewLabel_1_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		lblNewLabel_1_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		lblNewLabel_1_1.setBounds(458, 4, 102, 21);
 		panel_3.add(lblNewLabel_1_1);
 		
 		if (this.adminPermission > 0)
 		{
 			JPanel panel_4 = new JPanel();
-			tabbedPane.addTab("ºÞ²z¿ï³æ", null, panel_4, null);
+			tabbedPane.addTab("ç®¡ç†é¸å–®", null, panel_4, null);
 			panel_4.setLayout(null);
 			
 			JLabel lblNewLabel_4 = new JLabel("\u4F7F\u7528\u8005\u5217\u8868");
-			lblNewLabel_4.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+			lblNewLabel_4.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 			lblNewLabel_4.setBounds(35, 57, 85, 15);
 			panel_4.add(lblNewLabel_4);
 			
@@ -518,32 +518,32 @@ public class Main extends JFrame {
 			JList list = new JList(demoList);
 			list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			list.setBackground(SystemColor.scrollbar);
-			list.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+			list.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 			list.setBounds(35, 86, 284, 206);
 			panel_4.add(list);
 			
-			JLabel lblNewLabel_4_1 = new JLabel("±z¦n " + name + " ¥Ø«eªº¨­¤À²Õ¬° " + this.admin);
-			lblNewLabel_4_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+			JLabel lblNewLabel_4_1 = new JLabel("æ‚¨å¥½ " + name + " ç›®å‰çš„èº«åˆ†çµ„ç‚º " + this.admin);
+			lblNewLabel_4_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 			lblNewLabel_4_1.setBounds(35, 10, 331, 15);
 			panel_4.add(lblNewLabel_4_1);
 			
-			JRadioButton upBtn = new JRadioButton("¨­¤À²Õ¤É¯Å");
-			upBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 14));
+			JRadioButton upBtn = new JRadioButton("èº«åˆ†çµ„å‡ç´š");
+			upBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 14));
 			upBtn.setBounds(35, 313, 95, 23);
 			panel_4.add(upBtn);
 			
-			JRadioButton downBtn = new JRadioButton("¨­¤À²Õ­°¯Å");
-			downBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 14));
+			JRadioButton downBtn = new JRadioButton("èº«åˆ†çµ„é™ç´š");
+			downBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 14));
 			downBtn.setBounds(35, 338, 95, 23);
 			panel_4.add(downBtn);
 			
-			JRadioButton delBtn = new JRadioButton("§R°£¨Ï¥ÎªÌ");
-			delBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 14));
+			JRadioButton delBtn = new JRadioButton("åˆªé™¤ä½¿ç”¨è€…");
+			delBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 14));
 			delBtn.setBounds(174, 313, 95, 23);
 			panel_4.add(delBtn);
 			
-			JButton btnNewButton_1 = new JButton("°e¥X");
-			btnNewButton_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 12));
+			JButton btnNewButton_1 = new JButton("é€å‡º");
+			btnNewButton_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 12));
 			btnNewButton_1.setBounds(35, 420, 284, 23);
 			panel_4.add(btnNewButton_1);
 			
@@ -567,16 +567,16 @@ public class Main extends JFrame {
 			btnNewButton_1.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {				
 					if (list.isSelectionEmpty())
-						JOptionPane.showMessageDialog(null, "¥¼¿ï¾Ü¨Ï¥ÎªÌ");
+						JOptionPane.showMessageDialog(null, "æœªé¸æ“‡ä½¿ç”¨è€…");
 					
 					try {
 						switch(sc.manageUser(name, list.getSelectedValue().toString(), buttonList))
 						{
-							case 0 ->  JOptionPane.showMessageDialog(null, "¨Ï¥ÎªÌÅv­­¤£¨¬");
-							case 1 ->  JOptionPane.showMessageDialog(null, "¨Ï¥ÎªÌÅv­­¤w¹F¤W­­");
-							case 2 ->  JOptionPane.showMessageDialog(null, "¨Ï¥ÎªÌÅv­­¤w¹F¤U­­");
-							case 3 ->  JOptionPane.showMessageDialog(null, "§ó·s¦¨¥\");
-							case 4 ->  JOptionPane.showMessageDialog(null, "¥\¯à¥¼¿ï¾Ü");
+							case 0 ->  JOptionPane.showMessageDialog(null, "ä½¿ç”¨è€…æ¬Šé™ä¸è¶³");
+							case 1 ->  JOptionPane.showMessageDialog(null, "ä½¿ç”¨è€…æ¬Šé™å·²é”ä¸Šé™");
+							case 2 ->  JOptionPane.showMessageDialog(null, "ä½¿ç”¨è€…æ¬Šé™å·²é”ä¸‹é™");
+							case 3 ->  JOptionPane.showMessageDialog(null, "æ›´æ–°æˆåŠŸ");
+							case 4 ->  JOptionPane.showMessageDialog(null, "åŠŸèƒ½æœªé¸æ“‡");
 						}
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
@@ -587,16 +587,16 @@ public class Main extends JFrame {
 		}
 		
 		JPanel panel_5 = new JPanel();
-		tabbedPane.addTab("¤U¸ü¤¤¤ß", null, panel_5, null);
+		tabbedPane.addTab("ä¸‹è¼‰ä¸­å¿ƒ", null, panel_5, null);
 		panel_5.setLayout(null);
 		
-		JLabel lblNewLabel_5 = new JLabel("ÀÉ®×¤U¸ü");
-		lblNewLabel_5.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		JLabel lblNewLabel_5 = new JLabel("æª”æ¡ˆä¸‹è¼‰");
+		lblNewLabel_5.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		lblNewLabel_5.setBounds(30, 7, 64, 23);
 		panel_5.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_5_1 = new JLabel("ºô­¶³sµ²");
-		lblNewLabel_5_1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		JLabel lblNewLabel_5_1 = new JLabel("ç¶²é é€£çµ");
+		lblNewLabel_5_1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		lblNewLabel_5_1.setBounds(480, 7, 64, 23);
 		panel_5.add(lblNewLabel_5_1);
 		
@@ -608,7 +608,7 @@ public class Main extends JFrame {
 			msgs.add(new JLabel(infoRs.getString(2)));
 			JLabel info = msgs.get(infoRow);
 			infoRow++;
-			info.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+			info.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 			info.setBounds(30, y, 135, 25);
 			panel_5.add(info);
 			y += 35;
@@ -622,20 +622,20 @@ public class Main extends JFrame {
 			String url = infoRsDown.getString(3);
 			if (url.equals("none"))
 			{
-				downLink.add(new JLabel("©|¥¼§ó·s"));
+				downLink.add(new JLabel("å°šæœªæ›´æ–°"));
 				JLabel downLinks = downLink.get(infoRowDown);
 				infoRowDown++;
-				downLinks.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+				downLinks.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 				downLinks.setBounds(180, y1, 64, 25);
 				panel_5.add(downLinks);
 				downLinks.setForeground(Color.RED.darker());
 			}
 			else
 			{
-				downLink.add(new JLabel("ÂI§Ú¤U¸ü"));
+				downLink.add(new JLabel("é»žæˆ‘ä¸‹è¼‰"));
 				JLabel downLinks = downLink.get(infoRowDown);
 				infoRowDown++;
-				downLinks.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+				downLinks.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 				downLinks.setBounds(180, y1, 64, 25);
 				panel_5.add(downLinks);
 				downLinks.setForeground(Color.BLUE.darker());
@@ -664,7 +664,7 @@ public class Main extends JFrame {
 			linkMsgs.add(new JLabel(linkMsgRs.getString(2)));
 			JLabel info = linkMsgs.get(linkMsgRow);
 			linkMsgRow++;
-			info.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+			info.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 			info.setBounds(480, y2, 135, 25);
 			panel_5.add(info);
 			y2 += 35;
@@ -676,10 +676,10 @@ public class Main extends JFrame {
 		while(infoLink.next())
 		{
 			String url = infoLink.getString(3);
-			links1.add(new JLabel("ÂI§Ú«e©¹"));
+			links1.add(new JLabel("é»žæˆ‘å‰å¾€"));
 			JLabel downLinks1 = links1.get(infoRowLink1);
 			infoRowLink1++;
-			downLinks1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+			downLinks1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 			downLinks1.setBounds(630, y3, 64, 25);
 			panel_5.add(downLinks1);
 			downLinks1.setForeground(Color.BLUE.darker());
@@ -701,35 +701,35 @@ public class Main extends JFrame {
 		}
 		
 		JPanel panel_6 = new JPanel();
-		tabbedPane.addTab("Åã¥Ü³]©w", null, panel_6, null);
+		tabbedPane.addTab("é¡¯ç¤ºè¨­å®š", null, panel_6, null);
 		panel_6.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		comboBox.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"\u8ACB\u9078\u64C7", "\u81EA\u9069\u61C9", "\u5168\u87A2\u5E55", "1024x768", "960x540 (\u5EFA\u8B70)"}));
 		comboBox.setBounds(111, 42, 163, 27);
 		panel_6.add(comboBox);
 		
-		JLabel lblNewLabel_6 = new JLabel("¸ÑªR«× :");
-		lblNewLabel_6.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		JLabel lblNewLabel_6 = new JLabel("è§£æžåº¦ :");
+		lblNewLabel_6.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		lblNewLabel_6.setBounds(45, 42, 56, 23);
 		panel_6.add(lblNewLabel_6);
 		
-		JButton btnNewButton_2 = new JButton("§ó·s");
+		JButton btnNewButton_2 = new JButton("æ›´æ–°");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				switch (comboBox.getSelectedItem().toString())
 				{
-					case "½Ð¿ï¾Ü" -> JOptionPane.showMessageDialog(null, "¥¼¿ï¾Ü¸ÑªR«×");
-					case "¦Û¾AÀ³" -> setSize((int)dim.getWidth() / 2, (int)dim.getHeight() / 2);
-					case "¥þ¿Ã¹õ" -> setSize((int)dim.getWidth(), (int)dim.getHeight());
+					case "è«‹é¸æ“‡" -> JOptionPane.showMessageDialog(null, "æœªé¸æ“‡è§£æžåº¦");
+					case "è‡ªé©æ‡‰" -> setSize((int)dim.getWidth() / 2, (int)dim.getHeight() / 2);
+					case "å…¨èž¢å¹•" -> setSize((int)dim.getWidth(), (int)dim.getHeight());
 					case "1024x768" -> setSize(1024, 768);
-					case "960x540 («ØÄ³)" -> setSize(960, 540);
+					case "960x540 (å»ºè­°)" -> setSize(960, 540);
 				}
 			}
 		});
-		btnNewButton_2.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 16));
+		btnNewButton_2.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 16));
 		btnNewButton_2.setBounds(45, 96, 229, 32);
 		panel_6.add(btnNewButton_2);
 	}

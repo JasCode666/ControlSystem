@@ -13,24 +13,24 @@ public class SqlConnect {
 	public static Statement sm;
 	public static ResultSet rs;
 
-	public SqlConnect() {
+public SqlConnect() {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			System.out.println("Driver³s±µ¦¨¥\");
+			System.out.println("Driveré€£æ¥æˆåŠŸ");
 		} catch (ClassNotFoundException e) {
-			System.out.println("Driver³s±µ¥¢±Ñ");
+			System.out.println("Driveré€£æ¥å¤±æ•—");
 		}
 		
 		try {
 			this.conn = DriverManager.getConnection("jdbc:mysql://104.199.216.245/controlsystem?"
 					+ "serverTimezone=GMT&useSSL=false&" + "user=jas&password=1234");
 			this.sm = conn.createStatement();
-			System.out.println("³s½u¦¨¥\");
+			System.out.println("é€£ç·šæˆåŠŸ");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			System.out.println("³s½u¥¢±Ñ");
+			System.out.println("é€£ç·šå¤±æ•—");
 		}
 	}
 	
@@ -82,9 +82,9 @@ public class SqlConnect {
 		String sql;
 		
 		if (select.equals("*"))
-			sql = "select name ¦WºÙ,status ª¬ºA,user ¨Ï¥ÎªÌ,notice ³Æµù,beanaccount ¼Ö¨§±b¸¹,beanpassword ¼Ö¨§±K½X from account";
+			sql = "select name ï¿½Wï¿½ï¿½,status ï¿½ï¿½ï¿½A,user ï¿½Ï¥Îªï¿½,notice ï¿½Æµï¿½,beanaccount ï¿½Ö¨ï¿½ï¿½bï¿½ï¿½,beanpassword ï¿½Ö¨ï¿½ï¿½Kï¿½X from account";
 		else
-			sql = "select name ¦WºÙ,status ª¬ºA,user ¨Ï¥ÎªÌ,notice ³Æµù,beanaccount ¼Ö¨§±b¸¹,beanpassword ¼Ö¨§±K½X from account where status='" + select + "';";
+			sql = "select name ï¿½Wï¿½ï¿½,status ï¿½ï¿½ï¿½A,user ï¿½Ï¥Îªï¿½,notice ï¿½Æµï¿½,beanaccount ï¿½Ö¨ï¿½ï¿½bï¿½ï¿½,beanpassword ï¿½Ö¨ï¿½ï¿½Kï¿½X from account where status='" + select + "';";
 				
 		ResultSet resultSet = this.sm.executeQuery(sql);
 		
@@ -92,17 +92,17 @@ public class SqlConnect {
 	}
 	
 	public int update(String name, String status, String user, String notice) throws SQLException {
-		if (name.equals("½Ğ¿ï¾Ü"))
+		if (name.equals("ï¿½Ğ¿ï¿½ï¿½"))
 			return 1;
 		
-		if (status.equals("½Ğ¿ï¾Ü"))
+		if (status.equals("ï¿½Ğ¿ï¿½ï¿½"))
 			return 2;
 		
 		String updateStr;
-		if (status.equals("±¾¿ú¤¤") || status.equals("½mµ¥¤¤"))
+		if (status.equals("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½") || status.equals("ï¿½mï¿½ï¿½ï¿½ï¿½"))
 			updateStr = "UPDATE account SET status='" +  status + "', user='" + user + "', notice = '" + notice + "' WHERE name='" + name + "';";
 		else
-			updateStr = "UPDATE account SET status='" +  status + "', user='µL', notice = '" + notice + "' WHERE name='" + name + "';";
+			updateStr = "UPDATE account SET status='" +  status + "', user='ï¿½L', notice = '" + notice + "' WHERE name='" + name + "';";
 		
 		this.sm.executeUpdate(updateStr);
 		
