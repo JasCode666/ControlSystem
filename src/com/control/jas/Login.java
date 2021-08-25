@@ -65,7 +65,7 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("\u7D00\u9304\u4F7F\u7528\u8005");
-		chckbxNewCheckBox.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 15));
+		chckbxNewCheckBox.setFont(new Font("ï¿½Lï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 15));
 		chckbxNewCheckBox.setBounds(270, 81, 109, 30);
 		contentPane.add(chckbxNewCheckBox);
 		
@@ -88,19 +88,19 @@ public class Login extends JFrame {
 		}
 		
 		JLabel lblNewLabel = new JLabel("\u4F7F\u7528\u8005");
-		lblNewLabel.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		lblNewLabel.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		lblNewLabel.setBounds(79, 82, 75, 26);
 		contentPane.add(lblNewLabel);
 		
 		userNameInput = new JTextField();
-		userNameInput.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		userNameInput.setFont(new Font("ï¿½Lï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 20));
 		userNameInput.setBounds(155, 81, 109, 27);
 		contentPane.add(userNameInput);
 		userNameInput.setColumns(10);
 		userNameInput.setText(account);
 		
 		JButton loginBtn = new JButton("\u767B\u5165");
-		loginBtn.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 20));
+		loginBtn.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 20));
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -115,10 +115,10 @@ public class Login extends JFrame {
 							f.dispose();
 							break;
 						case 2:
-							JOptionPane.showMessageDialog(null, "¦WºÙ¿ù»~");
+							JOptionPane.showMessageDialog(null, "åç¨±éŒ¯èª¤");
 							break;
 						case 3:
-							JOptionPane.showMessageDialog(null, "¦WºÙ¥¼¿é¤J");
+							JOptionPane.showMessageDialog(null, "åç¨±æœªè¼¸å…¥");
 							break;
 					}
 					
