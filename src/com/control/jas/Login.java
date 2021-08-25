@@ -65,7 +65,7 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("\u7D00\u9304\u4F7F\u7528\u8005");
-		chckbxNewCheckBox.setFont(new Font("�L�n������", Font.BOLD, 15));
+		chckbxNewCheckBox.setFont(new Font("微軟正黑體", Font.BOLD, 15));
 		chckbxNewCheckBox.setBounds(270, 81, 109, 30);
 		contentPane.add(chckbxNewCheckBox);
 		
@@ -93,7 +93,7 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		userNameInput = new JTextField();
-		userNameInput.setFont(new Font("�L�n������", Font.BOLD, 20));
+		userNameInput.setFont(new Font("微軟正黑體", Font.BOLD, 20));
 		userNameInput.setBounds(155, 81, 109, 27);
 		contentPane.add(userNameInput);
 		userNameInput.setColumns(10);
