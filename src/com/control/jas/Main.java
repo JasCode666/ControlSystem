@@ -67,6 +67,7 @@ import javax.swing.JRadioButton;
 import java.awt.SystemColor;
 import javax.swing.JLayeredPane;
 import javax.swing.JTree;
+import java.awt.FlowLayout;
 
 public class Main extends JFrame {
 
@@ -77,7 +78,7 @@ public class Main extends JFrame {
 	private JTextField beanPassword;
 	private JTextField noticeLbl;
 	private int adminPermission = 0;
-	private String admin = "";
+	private String admin = "一般使用者";
 
 	/**
 	 * Launch the application.
@@ -751,5 +752,48 @@ public class Main extends JFrame {
 		btnNewButton_2.setFont(new Font("微軟正黑體", Font.BOLD, 16));
 		btnNewButton_2.setBounds(45, 96, 229, 32);
 		panel_6.add(btnNewButton_2);
+		
+		JPanel panel_7 = new JPanel();
+		tabbedPane.addTab("個人設定", null, panel_7, null);
+		panel_7.setLayout(null);
+		
+		JLabel lblNewLabel_3 = new JLabel("名稱 :");
+		lblNewLabel_3.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		lblNewLabel_3.setBounds(36, 35, 47, 21);
+		panel_7.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_3_2 = new JLabel("" + name);
+		lblNewLabel_3_2.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		lblNewLabel_3_2.setBounds(83, 35, 102, 21);
+		panel_7.add(lblNewLabel_3_2);
+		
+		JLabel lblNewLabel_3_3 = new JLabel("權限 :");
+		lblNewLabel_3_3.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		lblNewLabel_3_3.setBounds(36, 75, 47, 21);
+		panel_7.add(lblNewLabel_3_3);
+		
+		JLabel lblNewLabel_3_2_1 = new JLabel("" + admin);
+		lblNewLabel_3_2_1.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		lblNewLabel_3_2_1.setBounds(83, 75, 102, 21);
+		lblNewLabel_3_2_1.setForeground(Color.green.darker());
+		panel_7.add(lblNewLabel_3_2_1);
+		
+		JLabel lblNewLabel_3_3_1 = new JLabel("修改密碼");
+		lblNewLabel_3_3_1.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		lblNewLabel_3_3_1.setBounds(36, 114, 64, 21);
+		lblNewLabel_3_3_1.setForeground(Color.red.darker());
+		lblNewLabel_3_3_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		panel_7.add(lblNewLabel_3_3_1);
+		lblNewLabel_3_3_1.addMouseListener(new MouseAdapter() {
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		    	ChangePassword frame = new ChangePassword(name);
+				frame.getContentPane();
+				frame.setLocationRelativeTo(null);
+				frame.setResizable(false);
+				frame.setVisible(true);
+		    }
+			    
+		});
 	}
 }

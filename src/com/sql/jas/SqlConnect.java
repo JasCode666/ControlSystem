@@ -262,4 +262,33 @@ public class SqlConnect {
 
 		return rs;
 	}
+	
+	public int changePasswordCheck(String name, String oldPassword, String newPassword, String newPasswordCheck) throws SQLException {
+		String sql = "select password from users where name='" + name + "'";
+		ResultSet rs = this.sm.executeQuery(sql);
+		
+		while(rs.next())
+		{
+			if (!rs.getString(1).equals(oldPassword))
+				return 0;
+		}
+		
+		if (!newPassword.equals(newPasswordCheck))
+			return 1;
+		
+		changePassword(name, newPassword);
+		return 2;
+	}
+	
+	public void changePassword(String name, String newPassword) throws SQLException {
+		String sql = "Update users set password='" + newPassword + "' where name='" + name + "'";
+		this.sm.executeUpdate(sql);
+		
+		try {
+			writeAccountFile(name, newPassword);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }
