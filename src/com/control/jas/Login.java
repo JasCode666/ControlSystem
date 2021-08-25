@@ -100,9 +100,9 @@ public class Login extends JFrame {
 			chckbxNewCheckBox.setSelected(false);
 		}
 		
-		JLabel lblNewLabel = new JLabel("\u4F7F\u7528\u8005");
+		JLabel lblNewLabel = new JLabel("帳號");
 		lblNewLabel.setFont(new Font("微軟正黑體", Font.BOLD, 20));
-		lblNewLabel.setBounds(75, 51, 75, 26);
+		lblNewLabel.setBounds(87, 51, 40, 26);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_3 = new JLabel("密碼");
