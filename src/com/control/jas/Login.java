@@ -129,20 +129,17 @@ public class Login extends JFrame {
 				try {
 					switch(sc.CheckAccount(userNameInput.getText(), passwordField.getText(), chckbxNewCheckBox.isSelected()))
 					{
-						case 1:
+						case 1 ->
+						{
 							Main frame = new Main(userNameInput.getText());
 							frame.setVisible(true);
 							frame.getContentPane();
 							frame.setLocationRelativeTo(null);
 							frame.setVisible(true);
 							f.dispose();
-							break;
-						case 2:
-							JOptionPane.showMessageDialog(null, "名稱錯誤");
-							break;
-						case 3:
-							JOptionPane.showMessageDialog(null, "名稱未輸入");
-							break;
+						}
+						case 2 -> JOptionPane.showMessageDialog(null, "帳號或密碼錯誤");
+						case 3 -> JOptionPane.showMessageDialog(null, "帳號未輸入");
 					}
 					
 				} catch (SQLException e1) {

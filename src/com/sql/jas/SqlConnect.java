@@ -43,7 +43,7 @@ public class SqlConnect {
 		ResultSet resultSet = this.sm.executeQuery(select);
 
 		while (resultSet.next())
-		{
+		{	
 			if (resultSet.getString(1).equals(name) && resultSet.getString(2).equals(password))
 			{
 				if (save)
@@ -58,7 +58,6 @@ public class SqlConnect {
 				return 1;
 			}
 		}
-
 		return 2;
 	}
 

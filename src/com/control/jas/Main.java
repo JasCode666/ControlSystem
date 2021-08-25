@@ -114,6 +114,7 @@ public class Main extends JFrame {
 			e3.printStackTrace();
 		}
 		
+		
 		switch (this.adminPermission)
 		{
 			case 1 -> this.admin = "管理員";
