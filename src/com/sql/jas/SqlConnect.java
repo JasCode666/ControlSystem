@@ -34,22 +34,22 @@ public class SqlConnect {
 		}
 	}
 
-	public int CheckAccount(String name, boolean save) throws SQLException {
+	public int CheckAccount(String name, String password, boolean save) throws SQLException {
 
 		if (name.equals(""))
 			return 3;
 
-		String select = "select name from users";
+		String select = "select name,password,permission from users";
 		ResultSet resultSet = this.sm.executeQuery(select);
 
 		while (resultSet.next())
 		{
-			if (resultSet.getString(1).equals(name))
+			if (resultSet.getString(1).equals(name) && resultSet.getString(2).equals(password))
 			{
 				if (save)
 				{
 					try {
-						writeAccountFile(name);
+						writeAccountFile(name, password);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -62,13 +62,39 @@ public class SqlConnect {
 		return 2;
 	}
 
-	public void writeAccountFile(String user) throws IOException {
+	public void writeAccountFile(String user, String password) throws IOException {
 		FileWriter fileWriter = new FileWriter("maplecontrol.txt");
 		BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
 		bufferedWriter.write(user);
+		bufferedWriter.newLine();
+		bufferedWriter.write(password);
 		bufferedWriter.flush();
 		fileWriter.close();
+	}
+	
+	public int registerSystem(String account, String password, String passwordCheck) throws SQLException {
+		String select = "select name from users";
+		ResultSet resultSet = this.sm.executeQuery(select);
+		
+		while (resultSet.next())
+		{
+			if (resultSet.getString(1).equals(account))
+				return 0;
+		}
+		System.out.println(password);
+		System.out.println(passwordCheck);
+		
+		if (!password.equals(passwordCheck))
+			return 1;
+		
+		createAccount(account, password);
+		return 2;
+	}
+	
+	public void createAccount(String account, String password) throws SQLException {
+		String insert = "INSERT INTO users (name, password) VALUES ('" + account + "','" + password + "')";
+		this.sm.executeUpdate(insert);
 	}
 
 	public ResultSet GetAccount() throws SQLException {
@@ -198,7 +224,7 @@ public class SqlConnect {
 		if (btnlist[0].isSelected() && adminPermissionLevel > 1)
 		{
 			String sqldel = "delete from users where name='" + userName + "'";
-			this.sm.executeQuery(sqldel);
+			this.sm.executeUpdate(sqldel);
 		}
 		else if (adminPermissionLevel == 1)
 			return 0;

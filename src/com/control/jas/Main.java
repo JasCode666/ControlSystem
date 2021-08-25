@@ -100,6 +100,7 @@ public class Main extends JFrame {
 	 * @throws SQLException 
 	 */
 	public Main(String name) throws SQLException {
+		setTitle("Maple Control");
 		setResizable(false);
 		SpringLayout layout = new SpringLayout();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/com/control/jas/maple.png")));
@@ -233,48 +234,10 @@ public class Main extends JFrame {
 		lblNewLabel_2.setBounds(41, 33, 56, 22);
 		panel_2.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("\u8A3B : \u65B0\u589E\u5B8C\u8ACB\u5237\u65B0\u5E33\u865F\u8CC7\u6599");
-		lblNewLabel_3.setFont(new Font("微軟正黑體", Font.BOLD, 20));
-		lblNewLabel_3.setBounds(41, 198, 264, 22);
-		lblNewLabel_3.setForeground(Color.RED.darker());
-		panel_2.add(lblNewLabel_3);
-		
 		JSpinner spinner = new JSpinner();
 		spinner.setFont(new Font("微軟正黑體", Font.BOLD, 20));
 		spinner.setBounds(104, 33, 97, 22);
 		panel_2.add(spinner);
-		
-		JButton addBtn = new JButton("\u65B0\u589E");
-		addBtn.setFont(new Font("微軟正黑體", Font.BOLD, 16));
-		addBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try {
-					int row = 0;
-					ResultSet resultSet = sc.GetAccount();
-					while (resultSet.next())
-					{
-						row++;
-					}
-					row /= 2;
-					
-					switch (sc.insert(row, (Integer)spinner.getValue()))
-					{
-						case 0 :
-							JOptionPane.showMessageDialog(null, "新增成功");
-							break;
-						case 1 :
-							JOptionPane.showMessageDialog(null, "新增失敗");
-							break;
-					}
-					
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
-		});
-		addBtn.setBounds(41, 96, 79, 31);
-		panel_2.add(addBtn);
 		
 		JLabel lblNewLabel_3_1 = new JLabel("\u8A3B : \u4E00\u500B\u6A02\u8C46\u5E33\u865F\u70BA\u4E00\u7D44");
 		lblNewLabel_3_1.setFont(new Font("微軟正黑體", Font.BOLD, 20));
@@ -298,6 +261,51 @@ public class Main extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		JButton addBtn = new JButton("\u65B0\u589E");
+		addBtn.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		addBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					int row = 0;
+					ResultSet resultSet = sc.GetAccount();
+					while (resultSet.next())
+					{
+						row++;
+					}
+					row /= 2;
+					
+					switch (sc.insert(row, (Integer)spinner.getValue()))
+					{
+						case 0 :
+							JOptionPane.showMessageDialog(null, "新增成功");
+							comboBox_1_2.removeAllItems();
+							comboBox_1.removeAllItems();
+							try {
+								ResultSet resultSet1 = sc.GetAccount();
+								while (resultSet1.next())
+								{
+									comboBox_1_2.addItem(resultSet1.getString(1));
+									comboBox_1.addItem(resultSet1.getString(1));
+								}
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							break;
+						case 1 :
+							JOptionPane.showMessageDialog(null, "新增失敗");
+							break;
+					}
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		addBtn.setBounds(41, 96, 79, 31);
+		panel_2.add(addBtn);
 		
 		JButton refreshBtn = new JButton("\u5237\u65B0");
 		refreshBtn.addActionListener(new ActionListener() {
@@ -509,6 +517,7 @@ public class Main extends JFrame {
 			lblNewLabel_4.setBounds(35, 57, 85, 15);
 			panel_4.add(lblNewLabel_4);
 			
+
 			String members[] = sc.getUserList(name);
 			DefaultListModel demoList = new DefaultListModel();
 			for (String x : members)
@@ -521,7 +530,7 @@ public class Main extends JFrame {
 			list.setFont(new Font("微軟正黑體", Font.BOLD, 16));
 			list.setBounds(35, 86, 284, 206);
 			panel_4.add(list);
-			
+
 			JLabel lblNewLabel_4_1 = new JLabel("您好 " + name + " 目前的身分組為 " + this.admin);
 			lblNewLabel_4_1.setFont(new Font("微軟正黑體", Font.BOLD, 16));
 			lblNewLabel_4_1.setBounds(35, 10, 331, 15);
@@ -575,7 +584,17 @@ public class Main extends JFrame {
 							case 0 ->  JOptionPane.showMessageDialog(null, "使用者權限不足");
 							case 1 ->  JOptionPane.showMessageDialog(null, "使用者權限已達上限");
 							case 2 ->  JOptionPane.showMessageDialog(null, "使用者權限已達下限");
-							case 3 ->  JOptionPane.showMessageDialog(null, "更新成功");
+							case 3 ->  
+							{
+								JOptionPane.showMessageDialog(null, "更新成功");
+								String membersNew[] = sc.getUserList(name);
+								DefaultListModel demoListNew = new DefaultListModel();
+								for (String x : membersNew)
+								{
+									demoListNew.addElement(x);
+								}
+								list.setModel(demoListNew);
+							}
 							case 4 ->  JOptionPane.showMessageDialog(null, "功能未選擇");
 						}
 					} catch (SQLException e1) {
