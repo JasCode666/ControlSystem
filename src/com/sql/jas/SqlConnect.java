@@ -12,6 +12,10 @@ public class SqlConnect {
 	public static Connection conn;
 	public static Statement sm;
 	public static ResultSet rs;
+	private String serverAdress = "";	// Your server IP
+	private String databaseName = "";	// Your database name
+	private String userName = "";		// Your user name
+	private String userPassword = "";	// Your user password
 
 	public SqlConnect() {
 
@@ -23,8 +27,8 @@ public class SqlConnect {
 		}
 
 		try {
-			this.conn = DriverManager.getConnection("jdbc:mysql://104.199.216.245/controlsystem?"
-					+ "serverTimezone=GMT&useSSL=false&" + "user=jas&password=1234");
+			this.conn = DriverManager.getConnection("jdbc:mysql://" + serverAdress +"/" + databaseName + "?"
+					+ "serverTimezone=GMT&useSSL=false&" + "user=" + userName + "&password=" + userPassword);
 			this.sm = conn.createStatement();
 			System.out.println("連線成功");
 		} catch (SQLException e) {
