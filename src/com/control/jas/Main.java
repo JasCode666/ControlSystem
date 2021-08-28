@@ -446,7 +446,7 @@ public class Main extends JFrame {
 		});
 
 		chckbxNewCheckBox.setFont(new Font("微軟正黑體", Font.BOLD, 12));
-		chckbxNewCheckBox.setBounds(275, 2, 97, 23);
+		chckbxNewCheckBox.setBounds(275, 2, 116, 23);
 		panel.add(chckbxNewCheckBox);
 		
 		JButton searchBtn = new JButton("\u67E5\u8A62");
@@ -723,7 +723,7 @@ public class Main extends JFrame {
 		
 		JLabel lblNewLabel_6 = new JLabel("解析度 :");
 		lblNewLabel_6.setFont(new Font("微軟正黑體", Font.BOLD, 16));
-		lblNewLabel_6.setBounds(45, 42, 56, 23);
+		lblNewLabel_6.setBounds(45, 42, 66, 23);
 		panel_6.add(lblNewLabel_6);
 		
 		JButton btnNewButton_2 = new JButton("更新");
