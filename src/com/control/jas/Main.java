@@ -68,6 +68,8 @@ import java.awt.SystemColor;
 import javax.swing.JLayeredPane;
 import javax.swing.JTree;
 import java.awt.FlowLayout;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class Main extends JFrame {
 
@@ -79,6 +81,7 @@ public class Main extends JFrame {
 	private JTextField noticeLbl;
 	private int adminPermission = 0;
 	private String admin = "一般使用者";
+	private JTextField levelLbl;
 
 	/**
 	 * Launch the application.
@@ -106,6 +109,7 @@ public class Main extends JFrame {
 		SpringLayout layout = new SpringLayout();
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Main.class.getResource("/com/control/jas/maple.png")));
 		SqlConnect sc = new SqlConnect();
+		Scripts scripts = new Scripts();
 		Text text = new Text();
 		try {
 			this.adminPermission = sc.getUserData(name);
@@ -186,23 +190,51 @@ public class Main extends JFrame {
 		comboBox_1_1.setBounds(137, 98, 202, 23);
 		panel_1.add(comboBox_1_1);
 		
+		JLabel codeLbl_2 = new JLabel("角色職業 :");
+		codeLbl_2.setFont(new Font("微軟正黑體", Font.BOLD, 20));
+		codeLbl_2.setBounds(37, 143, 103, 19);
+		panel_1.add(codeLbl_2);
+		
+		JLabel statusLbl_2 = new JLabel("角色等級 :");
+		statusLbl_2.setFont(new Font("微軟正黑體", Font.BOLD, 20));
+		statusLbl_2.setBounds(37, 185, 103, 19);
+		panel_1.add(statusLbl_2);
+		
+		JComboBox comboBox_1_3 = new JComboBox();
+		comboBox_1_3.setModel(new DefaultComboBoxModel(new String[] {"請選擇"}));
+		comboBox_1_3.setToolTipText("");
+		comboBox_1_3.setFont(new Font("微軟正黑體", Font.BOLD, 20));
+		comboBox_1_3.setBounds(137, 141, 202, 23);
+		panel_1.add(comboBox_1_3);
+		ResultSet rs = scripts.getJobs();
+		while(rs.next())
+		{
+			comboBox_1_3.addItem(rs.getString(1));
+		}
+		
+		levelLbl = new JTextField();
+		levelLbl.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		levelLbl.setColumns(10);
+		levelLbl.setBounds(137, 184, 202, 23);
+		panel_1.add(levelLbl);
+		
 		JButton btnNewButton = new JButton("\u9001\u51FA\u66F4\u65B0");
 		btnNewButton.setFont(new Font("微軟正黑體", Font.BOLD, 20));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					switch (sc.update(comboBox_1.getSelectedItem().toString(), comboBox_1_1.getSelectedItem().toString(), name, noticeLbl.getText()))
+					switch (sc.update(comboBox_1.getSelectedItem().toString(), comboBox_1_1.getSelectedItem().toString(), name, levelLbl.getText(), comboBox_1_3.getSelectedItem().toString(),  noticeLbl.getText()))
 					{
-						case 0 :
+						case 0 -> {
 							JOptionPane.showMessageDialog(null, "狀態更新完成");
 							noticeLbl.setText("");
-							break;
-						case 1 :
-							JOptionPane.showMessageDialog(null, "未選擇帳號");
-							break;
-						case 2 :
-							JOptionPane.showMessageDialog(null, "未選擇狀態");
-							break;
+							levelLbl.setText("");
+						}
+						case 1 -> JOptionPane.showMessageDialog(null, "未選擇帳號");
+
+						case 2 -> JOptionPane.showMessageDialog(null, "未選擇狀態");
+						
+						case 3 -> JOptionPane.showMessageDialog(null, "未選擇職業");
 					}
 				} catch (HeadlessException e1) {
 					// TODO Auto-generated catch block
@@ -213,17 +245,28 @@ public class Main extends JFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(37, 192, 128, 37);
+		btnNewButton.setBounds(37, 275, 128, 37);
 		panel_1.add(btnNewButton);
+		
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					scripts.refreshMessage(comboBox_1, comboBox_1_1, comboBox_1_3, levelLbl, noticeLbl);
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
 		JLabel statusLbl_1 = new JLabel("\u72C0\u614B\u5099\u8A3B :");
 		statusLbl_1.setFont(new Font("微軟正黑體", Font.BOLD, 20));
-		statusLbl_1.setBounds(37, 142, 103, 19);
+		statusLbl_1.setBounds(37, 225, 103, 19);
 		panel_1.add(statusLbl_1);
 		
 		noticeLbl = new JTextField();
 		noticeLbl.setFont(new Font("微軟正黑體", Font.BOLD, 16));
-		noticeLbl.setBounds(137, 142, 202, 23);
+		noticeLbl.setBounds(137, 225, 202, 23);
 		panel_1.add(noticeLbl);
 		noticeLbl.setColumns(10);
 		
@@ -392,78 +435,22 @@ public class Main extends JFrame {
 		statusBox.setBounds(55, 2, 148, 23);
 		panel.add(statusBox);
 		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("顯示帳號密碼");
+		chckbxNewCheckBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				scripts.refreshTextArea(textArea, chckbxNewCheckBox, statusBox);
+			}
+		});
+
+		chckbxNewCheckBox.setFont(new Font("微軟正黑體", Font.BOLD, 12));
+		chckbxNewCheckBox.setBounds(275, 2, 97, 23);
+		panel.add(chckbxNewCheckBox);
+		
 		JButton searchBtn = new JButton("\u67E5\u8A62");
 		searchBtn.setFont(new Font("微軟正黑體", Font.BOLD, 12));
 		searchBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText("");
-				String userSelect = statusBox.getSelectedItem().toString();
-				if (userSelect.equals("全部"))
-					try {
-						ResultSet rs = sc.find("*");
-						ResultSetMetaData rsmd = rs.getMetaData();
-						textArea.append(" ");
-						int countLine = 0;
-						for (int i = 1 ; i <= rsmd.getColumnCount() ; i++)
-						{
-							textArea.append(rsmd.getColumnLabel(i) + "\t| ");
-						}
-						textArea.append("\n");
-						textArea.append("———————————————————————————————————\n");
-						while (rs.next())
-						{
-							textArea.append(" " + rs.getString(1) + 
-									"\t|  " +  rs.getString(2) + 
-									"\t|  " + rs.getString(3) + 
-//									"\t|  " + rs.getTimestamp(4).toString().substring(5, 19) +
-									"\t|  " + rs.getString(4) +
-									"\t|  " + rs.getString(5) + 
-									"\t|  " + rs.getString(6) + 
-									"\n"
-							);
-							textArea.append("———————————————————————————————————\n");
-							countLine++;
-						}
-						textArea.setCaretPosition(0);
-						textArea.insert(" 搜尋 ' "+ userSelect + " '\t結果總共有 : " + countLine + " 隻角色\n", 1);
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				else
-				{
-					try {
-						ResultSet rs = sc.find(userSelect);
-						ResultSetMetaData rsmd = rs.getMetaData();
-						textArea.append(" ");
-						int countLine = 0;
-						for (int i = 1 ; i <= rsmd.getColumnCount() ; i++)
-						{
-							textArea.append(rsmd.getColumnLabel(i) + "\t| ");
-						}
-						textArea.append("\n");
-						textArea.append("———————————————————————————————————\n");
-						while (rs.next())
-						{
-							textArea.append(" " + rs.getString(1) + 
-									"\t|  " +  rs.getString(2) + 
-									"\t|  " + rs.getString(3) + 
-//									"\t|  " + rs.getTimestamp(4).toString().substring(5, 19) +
-									"\t|  " + rs.getString(4) + 
-									"\t|  " + rs.getString(5) + 
-									"\t|  " + rs.getString(6) + 
-									"\n"
-							);
-							textArea.append("———————————————————————————————————\n");
-							countLine++;
-						}
-						textArea.setCaretPosition(0);
-						textArea.insert(" 搜尋 ' "+ userSelect + " '\t結果總共有 : " + countLine + " 隻角色\n", 1);
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-				}
+				scripts.refreshTextArea(textArea, chckbxNewCheckBox, statusBox);
 			}
 		});
 		searchBtn.setBounds(210, 2, 60, 23);

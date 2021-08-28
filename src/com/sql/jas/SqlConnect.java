@@ -111,27 +111,30 @@ public class SqlConnect {
 		String sql;
 
 		if (select.equals("*"))
-			sql = "select name 名稱,status 狀態,user 使用者,notice 備註,beanaccount 樂豆帳號,beanpassword 樂豆密碼 from account";
+			sql = "select name 名稱,status 狀態,user 使用者,job 職業,level 等級,notice 備註,beanaccount 樂豆帳號,beanpassword 樂豆密碼 from account";
 		else
-			sql = "select name 名稱,status 狀態,user 使用者,notice 備註,beanaccount 樂豆帳號,beanpassword 樂豆密碼 from account where status='" + select + "';";
+			sql = "select name 名稱,status 狀態,user 使用者,job 職業,level 等級,notice 備註,beanaccount 樂豆帳號,beanpassword 樂豆密碼 from account where status='" + select + "';";
 
 		ResultSet resultSet = this.sm.executeQuery(sql);
 
 		return resultSet;
 	}
 
-	public int update(String name, String status, String user, String notice) throws SQLException {
+	public int update(String name, String status, String user, String level, String job, String notice) throws SQLException {
 		if (name.equals("請選擇"))
 			return 1;
 
 		if (status.equals("請選擇"))
 			return 2;
+		
+		if (job.equals("請選擇"))
+			return 3;
 
 		String updateStr;
 		if (status.equals("掛錢中") || status.equals("練等中"))
-			updateStr = "UPDATE account SET status='" +  status + "', user='" + user + "', notice = '" + notice + "' WHERE name='" + name + "';";
+			updateStr = "UPDATE account SET status='" +  status + "', user='" + user + "', notice = '" + notice + "', level = '" + level + "', job = '" + job + "' WHERE name='" + name + "';";
 		else
-			updateStr = "UPDATE account SET status='" +  status + "', user='無', notice = '" + notice + "' WHERE name='" + name + "';";
+			updateStr = "UPDATE account SET status='" +  status + "', user='無', notice = '" + notice + "', level = '" + level + "', job = '" + job + "' WHERE name='" + name + "';";
 
 		this.sm.executeUpdate(updateStr);
 
