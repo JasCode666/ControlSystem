@@ -41,7 +41,7 @@ public class Login extends JFrame {
 	private String password = "";
 	private JTextField textField;
 	private JPasswordField passwordField;
-	private String version = "1.0.1";
+	private String version = "1.0.2";
 
 	/**
 	 * Launch the application.
