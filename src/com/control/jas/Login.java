@@ -41,6 +41,7 @@ public class Login extends JFrame {
 	private String password = "";
 	private JTextField textField;
 	private JPasswordField passwordField;
+	private String version = "1.0.1";
 
 	/**
 	 * Launch the application.
@@ -64,8 +65,10 @@ public class Login extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @throws SQLException 
 	 */
 	public Login() {
+		Scripts scripts = new Scripts();				
 		setTitle("Maple Control");		
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Login.class.getResource("/com/control/jas/maple.png")));
 		SqlConnect sc = new SqlConnect();
@@ -75,6 +78,13 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		try {
+			String nowVersion = scripts.getVersion();
+			if (!version.equals(nowVersion)) JOptionPane.showMessageDialog(null, "目前已有新版推出, 請至下載中心下載最新版本", "版本訊息", 2);
+		} catch (SQLException e3) {
+			// TODO Auto-generated catch block
+			e3.printStackTrace();
+		}
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("紀錄帳號密碼");
 		chckbxNewCheckBox.setFont(new Font("微軟正黑體", Font.BOLD, 15));
@@ -131,7 +141,7 @@ public class Login extends JFrame {
 					{
 						case 1 ->
 						{
-							Main frame = new Main(userNameInput.getText());
+							Main frame = new Main(userNameInput.getText(), version);
 							frame.setVisible(true);
 							frame.getContentPane();
 							frame.setLocationRelativeTo(null);
@@ -162,6 +172,11 @@ public class Login extends JFrame {
 		contentPane.add(lblNewLabel_2);
 		lblNewLabel_2.setForeground(Color.BLUE.darker());
 		lblNewLabel_2.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
+		JLabel lblNewLabel_1_1 = new JLabel("版本: " + version);
+		lblNewLabel_1_1.setFont(new Font("微軟正黑體", Font.BOLD, 12));
+		lblNewLabel_1_1.setBounds(362, 236, 62, 15);
+		contentPane.add(lblNewLabel_1_1);
 		
 		lblNewLabel_2.addMouseListener(new MouseAdapter() {
 		    @Override

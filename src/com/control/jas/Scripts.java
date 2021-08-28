@@ -15,6 +15,24 @@ public class Scripts {
 	
 	SqlConnect sqlConn = new SqlConnect();
 	
+	public String getVersion() throws SQLException {
+		String select = "select version from version";
+		String version = null;
+		ResultSet resultSet = sqlConn.sm.executeQuery(select);
+		
+		while(resultSet.next())
+		{
+			version = resultSet.getString(1);
+		}
+		
+		return version;
+	}
+	
+	public void changeVersion(String version) throws SQLException {
+		String select = "UPDATE version set version='" + version + "'";
+		sqlConn.sm.executeUpdate(select);
+	}
+	
 	public void refreshTextArea(JTextArea textArea, JCheckBox setAcVisble, JComboBox statusBox) {
 		textArea.setText("");
 		String userSelect = statusBox.getSelectedItem().toString();

@@ -82,6 +82,7 @@ public class Main extends JFrame {
 	private int adminPermission = 0;
 	private String admin = "一般使用者";
 	private JTextField levelLbl;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -103,7 +104,8 @@ public class Main extends JFrame {
 	 * Create the frame.
 	 * @throws SQLException 
 	 */
-	public Main(String name) throws SQLException {
+	public Main(String name, String version) throws SQLException {
+		setFont(new Font("微軟正黑體", Font.BOLD, 12));
 		setTitle("Maple Control");
 		setResizable(false);
 		SpringLayout layout = new SpringLayout();
@@ -772,6 +774,48 @@ public class Main extends JFrame {
 		lblNewLabel_3_3_1.setForeground(Color.red.darker());
 		lblNewLabel_3_3_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		panel_7.add(lblNewLabel_3_3_1);
+		
+		JLabel lblNewLabel_3_4 = new JLabel("目前版本 :");
+		lblNewLabel_3_4.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		lblNewLabel_3_4.setBounds(36, 155, 75, 21);
+		panel_7.add(lblNewLabel_3_4);
+		
+		JLabel lblNewLabel_3_2_2 = new JLabel("" + version);
+		lblNewLabel_3_2_2.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+		lblNewLabel_3_2_2.setBounds(113, 155, 102, 21);
+		panel_7.add(lblNewLabel_3_2_2);
+		
+//		if (name.equals("Jas"))
+//		{
+			JLabel lblNewLabel_3_4_1 = new JLabel("資料庫版本更改");
+			lblNewLabel_3_4_1.setFont(new Font("微軟正黑體", Font.BOLD, 16));
+			lblNewLabel_3_4_1.setBounds(36, 198, 119, 21);
+			panel_7.add(lblNewLabel_3_4_1);
+			
+			textField = new JTextField();
+			textField.setFont(new Font("微軟正黑體", Font.BOLD, 12));
+			textField.setBounds(36, 229, 130, 21);
+			panel_7.add(textField);
+			textField.setColumns(10);
+			
+			JButton btnNewButton_3 = new JButton("送出");
+			btnNewButton_3.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					try {
+						scripts.changeVersion(textField.getText());
+						textField.setText("");
+						JOptionPane.showMessageDialog(null, "版本修改成功");
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+			});
+			btnNewButton_3.setFont(new Font("微軟正黑體", Font.BOLD, 12));
+			btnNewButton_3.setBounds(36, 260, 87, 23);
+			panel_7.add(btnNewButton_3);
+//		}
+		
 		lblNewLabel_3_3_1.addMouseListener(new MouseAdapter() {
 		    @Override
 		    public void mouseClicked(MouseEvent e) {

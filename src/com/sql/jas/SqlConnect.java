@@ -12,10 +12,10 @@ public class SqlConnect {
 	public static Connection conn;
 	public static Statement sm;
 	public static ResultSet rs;
-	private String serverAdress = "";	// Your server IP
-	private String databaseName = "";	// Your database name
-	private String userName = "";		// Your user name
-	private String userPassword = "";	// Your user password
+	private String serverAdress = "104.199.216.245";	// Your server IP
+	private String databaseName = "controlsystem";	// Your database name
+	private String userName = "jas";		// Your user name
+	private String userPassword = "1234";	// Your user password
 
 	public SqlConnect() {
 
