@@ -440,7 +440,8 @@ public class Main extends JFrame {
 		JCheckBox chckbxNewCheckBox = new JCheckBox("顯示帳號密碼");
 		chckbxNewCheckBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				scripts.refreshTextArea(textArea, chckbxNewCheckBox, statusBox);
+				if (!textArea.getText().equals(""))
+					scripts.refreshTextArea(textArea, chckbxNewCheckBox, statusBox);
 			}
 		});
 
